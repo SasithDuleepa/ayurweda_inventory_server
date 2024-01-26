@@ -7,6 +7,7 @@ const DB = require('./config/Database.js');
 
 const PurchaseRaw = require('./routes/PurchaseRaw.js');
 const RawItems = require('./routes/RawItems.js')
+const Supplier = require('./routes/supplier.js')
  
 
 const app = express();
@@ -22,6 +23,7 @@ app.use(cors({
 
 
    app.use('/raw' , RawItems)
+   app.use('/supplier' , Supplier)
 
 app.use('/purchase/raw' , PurchaseRaw)
 
