@@ -7,7 +7,8 @@ const DB = require('./config/Database.js');
 
 
 //store
-const RawInventoryItems = require('./routes/InventoryRawItems.js')  
+const RawInventoryItems = require('./routes/InventoryRawItems.js');
+const ProductInventory = require('./routes/InventoryProducts');
  
 
 const app = express();
@@ -28,6 +29,7 @@ app.use(cors({
 
 
 app.use('/inventory/raw', RawInventoryItems);
+app.use('/inventory/product', ProductInventory);
 
 
 
