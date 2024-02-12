@@ -9,6 +9,8 @@ const DB = require('./config/Database.js');
 //store
 const RawInventoryItems = require('./routes/InventoryRawItems.js');
 const ProductInventory = require('./routes/InventoryProducts');
+const NonRaw = require('./routes/InventoryNonRaw');
+const AllInventory = require('./routes/InventoryAll.js');
  
 
 const app = express();
@@ -30,6 +32,8 @@ app.use(cors({
 
 app.use('/inventory/raw', RawInventoryItems);
 app.use('/inventory/product', ProductInventory);
+app.use('/inventory/non-raw', NonRaw);
+app.use('/inventory/all', AllInventory);
 
 
 
