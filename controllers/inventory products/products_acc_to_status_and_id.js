@@ -7,7 +7,7 @@ const ProductsAccToStatusAndItemId = (req,res) =>{
         const sql = `SELECT inventory_store_products.* ,product.*
             FROM inventory_store_products
             INNER JOIN product ON inventory_store_products.product_id = product.product_id
-            WHERE inventory_store_products.inventory_product_status = '${status}' AND inventory_store_products.product_id='${id}'`;
+            WHERE inventory_store_products.inventory_product_status = '${status}' AND inventory_store_products.product_id='${id}' AND product.product_status = 'ACTIVE'`;
         DB.connection.query(sql, (err, result) => {
             if(err) throw err;
             res.send(result);
