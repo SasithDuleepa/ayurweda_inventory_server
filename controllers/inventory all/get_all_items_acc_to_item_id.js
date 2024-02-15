@@ -14,7 +14,8 @@ const GetAllItemsAccToItemId = (req,res) =>{
             inventory_store_raw_items.raw_item_measure_unit AS measure_unit,
             inventory_store_raw_items.raw_item_store_id AS store_id,
             inventory_store_raw_items.raw_item_location_id AS store_location,
-            inventory_store_raw_items.raw_item_released_date AS item_released_date
+            inventory_store_raw_items.raw_item_released_date AS item_released_date,
+            inventory_store_raw_items._id AS item_id
         FROM inventory_store_raw_items
         INNER JOIN raw_item ON inventory_store_raw_items.raw_item_id = raw_item.raw_item_id
         WHERE inventory_store_raw_items.raw_item_id = '${id}' 
@@ -40,7 +41,8 @@ const GetAllItemsAccToItemId = (req,res) =>{
             non_raw_measure_unit AS measure_unit,
             non_raw_store_id AS store_id,
             non_raw_location_id AS store_location,
-            non_raw_released_date AS item_released_date
+            non_raw_released_date AS item_released_date,
+            _id AS item_id
             FROM inventory_store_non_raw
             WHERE non_raw_item_id = '${id}'
             AND non_raw_item_status = 'RELEASED'
