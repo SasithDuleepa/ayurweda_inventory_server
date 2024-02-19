@@ -11,7 +11,7 @@ const RawInventoryItems = require('./routes/InventoryRawItems.js');
 const ProductInventory = require('./routes/InventoryProducts');
 const NonRaw = require('./routes/InventoryNonRaw');
 const AllInventory = require('./routes/InventoryAll.js');
-const StoreKeeper = require('./routes/storeKeeper.js');
+const InventoryRequest = require('./routes/inventoryRequest.js');
 
 
 //job
@@ -41,7 +41,7 @@ app.use('/inventory/non-raw', NonRaw);
 app.use('/inventory/all', AllInventory);
 
 app.use('/job', Job);
-app.use('/storekeeper', StoreKeeper);
+app.use('/request', InventoryRequest);
 
 
 
