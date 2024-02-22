@@ -12,6 +12,7 @@ const ProductInventory = require('./routes/InventoryProducts');
 const NonRaw = require('./routes/InventoryNonRaw');
 const AllInventory = require('./routes/InventoryAll.js');
 const InventoryRequest = require('./routes/inventoryRequest.js');
+const Customer = require('./routes/customer.js');
 
 
 //job
@@ -42,6 +43,8 @@ app.use('/inventory/all', AllInventory);
 
 app.use('/job', Job);
 app.use('/request', InventoryRequest);
+
+app.use('/customer', Customer);
 
 
 
