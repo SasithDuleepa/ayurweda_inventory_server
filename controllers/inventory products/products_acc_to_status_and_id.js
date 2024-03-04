@@ -3,6 +3,7 @@ const DB = require('../../config/Database');
 
 const ProductsAccToStatusAndItemId = (req,res) =>{
     const { status, id } = req.params;
+    console.log(status, id);
     if(status && id){
         const sql = `SELECT inventory_store_products.* ,product.*
             FROM inventory_store_products

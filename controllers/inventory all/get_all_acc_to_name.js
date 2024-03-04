@@ -5,9 +5,10 @@ const GetAllAccToName = (req,res) =>{
     console.log(name)
     if(name){
         const sql =`
-        SELECT _id AS identifier ,non_raw_inventory_item_id AS Inventory_item_id, non_raw_item_id AS item_id, non_raw_item_name AS item_name, 'inventory_store_non_raw' AS table_name
-        FROM inventory_store_non_raw
-        WHERE non_raw_item_name LIKE '%${name}%'
+        SELECT inventory_store_non_raw._id AS identifier ,inventory_store_non_raw.non_raw_inventory_item_id AS Inventory_item_id, inventory_store_non_raw.non_raw_item_id AS item_id, non_raw.non_raw_name AS item_name, 'inventory_store_non_raw' AS table_name
+        FROM non_raw
+        INNER JOIN inventory_store_non_raw ON non_raw.non_raw_id = inventory_store_non_raw.non_raw_item_id
+        WHERE non_raw.non_raw_name LIKE '%${name}%'
 
         UNION
 
