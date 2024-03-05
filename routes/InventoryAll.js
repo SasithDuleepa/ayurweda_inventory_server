@@ -7,6 +7,8 @@ const GetAllItemsAccToItemId = require('../controllers/inventory all/get_all_ite
 const AddInventory = require('../controllers/inventory all/add_inventory');
 const GetAccToPo = require('../controllers/inventory all/get_acc_to_po');
 
+const StoreInventory = require('../controllers/inventory all/store_inventory');
+
 const router = express.Router();
 
 router.get('/:name', GetAllAccToName);  
@@ -15,5 +17,7 @@ router.get('/unitprice/:id', GetUnitPriceAccToItemId);
 router.get('/allitems/:id', GetAllItemsAccToItemId);
 router.get('/items/:po', GetAccToPo);
 router.post('/', AddInventory);
+
+router.post('/store', StoreInventory);
 
 module.exports = router;
