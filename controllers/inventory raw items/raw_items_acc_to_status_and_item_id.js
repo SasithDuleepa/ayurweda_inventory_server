@@ -2,6 +2,7 @@ const DB = require('../../config/Database');
 
 const RawItemsAccToStatusAndItemId = (req,res) => {
     const { status, id } = req.params;
+    console.log(status, id)
     if(status && id ){
         const sql = `SELECT inventory_store_raw_items.*,raw_item.*
         FROM inventory_store_raw_items
@@ -10,6 +11,7 @@ const RawItemsAccToStatusAndItemId = (req,res) => {
         DB.connection.query(sql, (err, result) => {
             if(err) throw err;
             res.send(result);
+            
         }
         )
     }

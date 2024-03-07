@@ -3,16 +3,23 @@ const DB = require('../../config/Database');
 const AddInventory = (req, res) => {
     return new Promise((resolve, reject) => {
         console.log(req.body);
-        const { purchase_order_id, po_items } = req.body;
+        const { purchase_order_id,date_now,user, po_items } = req.body;
         const promises = [];
         let invalidItems = [];
 
         if (po_items.length > 0) {
+
+            //update purchase order status
+            const sql_1 = `UPDATE purchase_order SET purchase_order_status = 'RECEIVED' WHERE purchase_order_id = '${purchase_order_id}' `;
+            promises.push(DB.connection.query(sql_1));
+
+
+
             po_items.forEach((element) => {
                 let item_start = element.item_id.split("-")[0];
 
                 if (item_start === "RAW" || item_start === "NRAW" || item_start === "PRODUCT") {
-                    if (element.item_supplied_qty !== 0 && element.item_status !== '' && element.item_store !== '') {
+                    if (element.item_supplied_qty !== 0  && element.item_store !== '') {
                         let tableName = "";
                         let insertColumns = "";
                         let valuesPlaceholders = "";
@@ -21,23 +28,36 @@ const AddInventory = (req, res) => {
                         switch (item_start) {
                             case "RAW":
                                 tableName = "inventory_store_raw_items";
-                                insertColumns = "(raw_item_inventory_id,raw_item_id, purchase_order_id, raw_item_added_qty, raw_item_actual_qty, raw_item_shadow_qty, raw_item_measure_unit, raw_item_store_id, raw_item_location_id, raw_item_released_date, raw_item_released_user_id, inventory_raw_item_status)";
+                                insertColumns = "(raw_item_inventory_id,raw_item_id, purchase_order_id, raw_item_added_qty, raw_item_actual_qty, raw_item_shadow_qty, raw_item_measure_unit, raw_item_store_id, raw_item_location_id, raw_item_released_date, raw_item_released_user_id, inventory_raw_item_status,inventory_raw_item_description,raw_item_purchased_date,raw_item_purchased_user_id)";
                                 break;
                             case "NRAW":
                                 tableName = "inventory_store_non_raw";
-                                insertColumns = "(non_raw_inventory_item_id,non_raw_item_id, purchase_order_id, non_raw_added_qty, non_raw_actual_qty, non_raw_shadow_qty, non_raw_measure_unit, non_raw_store_id, non_raw_location_id, non_raw_released_date, non_raw_released_user_id, non_raw_item_status)";
+                                insertColumns = "(non_raw_inventory_item_id,non_raw_item_id, purchase_order_id, non_raw_added_qty, non_raw_actual_qty, non_raw_shadow_qty, non_raw_measure_unit, non_raw_store_id, non_raw_location_id, non_raw_released_date, non_raw_released_user_id, non_raw_item_status,non_raw_item_description,non_raw_item_purchased_date,non_raw_item_purchased_user_id)";
                                 break;
                             case "PRODUCT":
                                 tableName = "inventory_store_products";
-                                insertColumns = "(inventory_product_id,product_id, purchase_order_id, product_added_qty, product_actual_qty, product_shadow_qty, product_measure_unit, product_store_id, product_location_id, product_released_date, product_released_user_id, inventory_product_status)";
+                                insertColumns = "(inventory_product_id,product_id, purchase_order_id, product_added_qty, product_actual_qty, product_shadow_qty, product_measure_unit, product_store_id, product_location_id, product_released_date, product_released_user_id, inventory_product_status, inventory_product_description,product_purchased_date,product_purchased_user_id)";
                                 break;
+                          
                             default:
                                 break;
                         }
 
-                        values = [element.item_inventory_id, element.item_id, purchase_order_id, element.item_supplied_qty, element.item_supplied_qty, element.item_supplied_qty, element.item_measure_unit, element.item_store, element.item_location, '', '', element.item_status];
+                        values = [element.item_inventory_id, element.item_id, purchase_order_id, element.item_supplied_qty, element.item_supplied_qty, element.item_supplied_qty, element.item_measure_unit, element.item_store, element.item_location, '', '', 'RECEIVED',element.item_description,date_now,user];
+                     // values = [element.item_inventory_id, element.item_id, purchase_order_id, element.item_supplied_qty, element.item_supplied_qty, element.item_supplied_qty, element.item_measure_unit, element.item_store, element.item_location, '', '', element.item_status,element.item_description];
 
-                        const sql = `INSERT INTO ${tableName} ${insertColumns} VALUES (${values.map(() => '?').join(', ')})`;
+                    
+                            
+                     
+                           const sql = `INSERT INTO ${tableName} ${insertColumns} VALUES (${values.map(() => '?').join(', ')})`;
+                            
+                       
+
+                        
+                        
+                        
+
+                        
 
                         promises.push(new Promise((resolveQuery, rejectQuery) => {
                             DB.connection.query(sql, values, (err, result) => {
@@ -53,6 +73,7 @@ const AddInventory = (req, res) => {
                     }
                     else {
                         invalidItems.push(element);
+                        console.log('data missing')
                     }
                 }
             });
