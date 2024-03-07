@@ -26,6 +26,8 @@ const GetAccToPo = (req,res) => {
         DB.connection.query(sql, (err, result) =>{
             if(err) throw err;
             res.send(result);
+            console.log(result)
+        
         })
     }
     

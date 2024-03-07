@@ -22,7 +22,7 @@ const PoItems = (req,res) => {
     LEFT JOIN 
         non_raw ON non_raw.non_raw_id = purchase_order_items.purchase_order_item_id
     LEFT JOIN 
-    product ON product.product_id = purchase_order_items.purchase_order_item_id
+        product ON product.product_id = purchase_order_items.purchase_order_item_id
     WHERE 
         purchase_order.purchase_order_id = '${id}'
 
