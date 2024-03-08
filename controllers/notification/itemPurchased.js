@@ -18,9 +18,9 @@ const ItemPurchased = (io) => {
         
         lengthArray.push(results.length);
         if(lengthArray.length > 2 ){
-            console.log(lengthArray);
+            // console.log(lengthArray);
             lengthArray.shift();
-            console.log(lengthArray);
+            // console.log(lengthArray);
         }
             if(lengthArray[0] < lengthArray[1]){
                 // Emit Socket.IO event for each pending inventory request

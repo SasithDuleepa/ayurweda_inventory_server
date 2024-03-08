@@ -28,6 +28,7 @@ const AllInventory = require('./routes/InventoryAll.js');
 const InventoryRequest = require('./routes/inventoryRequest.js');
 const Customer = require('./routes/customer.js');
 const Purchase = require('./routes/inventoryPurchase.js')
+const Branch = require('./routes/branch.js');
 
 
 //job
@@ -61,6 +62,8 @@ app.use('/request', InventoryRequest);
 
 app.use('/customer', Customer);
 app.use('/purchase', Purchase);
+
+app.use('/branch', Branch);
 
 
 

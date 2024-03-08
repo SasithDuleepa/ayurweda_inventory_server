@@ -28,22 +28,22 @@ const AddInventory = (req, res) => {
                         switch (item_start) {
                             case "RAW":
                                 tableName = "inventory_store_raw_items";
-                                insertColumns = "(raw_item_inventory_id,raw_item_id, purchase_order_id, raw_item_added_qty, raw_item_actual_qty, raw_item_shadow_qty, raw_item_measure_unit, raw_item_store_id, raw_item_location_id, raw_item_released_date, raw_item_released_user_id, inventory_raw_item_status,inventory_raw_item_description,raw_item_purchased_date,raw_item_purchased_user_id)";
+                                insertColumns = "(raw_item_inventory_id,raw_item_id, purchase_order_id, raw_item_added_qty, raw_item_actual_qty, raw_item_shadow_qty, raw_item_measure_unit, raw_item_store_id, raw_item_location_id, raw_item_released_date, raw_item_released_user_id, inventory_raw_item_status,inventory_raw_item_description,raw_item_purchased_date,raw_item_purchased_user_id,branch_id)";
                                 break;
                             case "NRAW":
                                 tableName = "inventory_store_non_raw";
-                                insertColumns = "(non_raw_inventory_item_id,non_raw_item_id, purchase_order_id, non_raw_added_qty, non_raw_actual_qty, non_raw_shadow_qty, non_raw_measure_unit, non_raw_store_id, non_raw_location_id, non_raw_released_date, non_raw_released_user_id, non_raw_item_status,non_raw_item_description,non_raw_item_purchased_date,non_raw_item_purchased_user_id)";
+                                insertColumns = "(non_raw_inventory_item_id,non_raw_item_id, purchase_order_id, non_raw_added_qty, non_raw_actual_qty, non_raw_shadow_qty, non_raw_measure_unit, non_raw_store_id, non_raw_location_id, non_raw_released_date, non_raw_released_user_id, non_raw_item_status,non_raw_item_description,non_raw_item_purchased_date,non_raw_item_purchased_user_id,branch_id)";
                                 break;
                             case "PRODUCT":
                                 tableName = "inventory_store_products";
-                                insertColumns = "(inventory_product_id,product_id, purchase_order_id, product_added_qty, product_actual_qty, product_shadow_qty, product_measure_unit, product_store_id, product_location_id, product_released_date, product_released_user_id, inventory_product_status, inventory_product_description,product_purchased_date,product_purchased_user_id)";
+                                insertColumns = "(inventory_product_id,product_id, purchase_order_id, product_added_qty, product_actual_qty, product_shadow_qty, product_measure_unit, product_store_id, product_location_id, product_released_date, product_released_user_id, inventory_product_status, inventory_product_description,product_purchased_date,product_purchased_user_id,branch_id)";
                                 break;
                           
                             default:
                                 break;
                         }
 
-                        values = [element.item_inventory_id, element.item_id, purchase_order_id, element.item_supplied_qty, element.item_supplied_qty, element.item_supplied_qty, element.item_measure_unit, element.item_store, element.item_location, '', '', 'RECEIVED',element.item_description,date_now,user];
+                        values = [element.item_inventory_id, element.item_id, purchase_order_id, element.item_supplied_qty, element.item_supplied_qty, element.item_supplied_qty, element.item_measure_unit, element.item_store, element.item_location, '', '', 'RECEIVED',element.item_description,date_now,user,'BRANCH-0001'];
                      // values = [element.item_inventory_id, element.item_id, purchase_order_id, element.item_supplied_qty, element.item_supplied_qty, element.item_supplied_qty, element.item_measure_unit, element.item_store, element.item_location, '', '', element.item_status,element.item_description];
 
                     

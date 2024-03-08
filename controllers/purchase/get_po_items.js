@@ -7,6 +7,7 @@ const PoItems = (req,res) => {
         const sql = `SELECT 
         purchase_order_items.*, 
         purchase_order.*,
+        supplier.supplier_name,
 
         COALESCE(raw_item.raw_item_name, non_raw.non_raw_name, product.product_name) AS item_name,
         COALESCE(raw_item.raw_item_measure_unit, non_raw.non_raw_measure_unit, product.product_measure_unit) AS item_measure_unit,
@@ -15,6 +16,8 @@ const PoItems = (req,res) => {
         
     FROM 
         purchase_order
+    JOIN 
+        supplier ON supplier.supplier_id = purchase_order.supplier_id
     JOIN 
         purchase_order_items ON purchase_order_items.purchase_order_id = purchase_order.purchase_order_id
     LEFT JOIN 
