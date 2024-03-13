@@ -12,23 +12,7 @@ const PORT = 8080;
 const DB = require('./config/Database.js');
 
 
-const ItemPurchased = require('./controllers/notification/itemPurchased.js');
 
-
-//store
-const RawInventoryItems = require('./routes/InventoryRawItems.js');
-const ProductInventory = require('./routes/InventoryProducts');
-const NonRaw = require('./routes/InventoryNonRaw');
-const AllInventory = require('./routes/InventoryAll.js');
-const InventoryRequest = require('./routes/inventoryRequest.js');
-const Customer = require('./routes/customer.js');
-const Purchase = require('./routes/inventoryPurchase.js')
-const Branch = require('./routes/branch.js');
-
-
-//job
-const Job = require('./routes/job.js');
- 
 
 
 
@@ -47,18 +31,8 @@ app.use(cors({
 
 
 
-app.use('/inventory/raw', RawInventoryItems);
-app.use('/inventory/product', ProductInventory);
-app.use('/inventory/non-raw', NonRaw);
-app.use('/inventory/all', AllInventory);
+// app.use('/inventory/raw', RawInventoryItems);
 
-app.use('/job', Job);
-app.use('/request', InventoryRequest);
-
-app.use('/customer', Customer);
-app.use('/purchase', Purchase);
-
-app.use('/branch', Branch);
 
 
 
@@ -95,6 +69,6 @@ const server = app.listen(process.env.PORT, () => {
 
 
  
-  setInterval(() => {
-    ItemPurchased(io);
-}, 5000);
+//   setInterval(() => {
+//     ItemPurchased(io);
+// }, 5000);
