@@ -11,6 +11,9 @@ const PORT = 8080;
 
 const DB = require('./config/Database.js');
 
+const Item = require('./routes/item.js');
+const ItemCategory = require('./routes/itemCategory.js');
+
 
 
 
@@ -32,6 +35,9 @@ app.use(cors({
 
 
 // app.use('/inventory/raw', RawInventoryItems);
+
+app.use('/item', Item);
+app.use('/itemCategory', ItemCategory);
 
 
 
@@ -56,7 +62,7 @@ const server = app.listen(process.env.PORT, () => {
   io.on('connection', (socket) => {
     console.log('a user connected');
 
-    ItemPurchased(io);
+    // ItemPurchased(io);
 
   
 
