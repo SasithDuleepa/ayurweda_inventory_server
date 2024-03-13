@@ -12,7 +12,7 @@ router.put('/update/:id', UpdateItem);
 // router.get('/:id', GetItemAccToItemId);
 
 
-router.get('/search', SearchItemsAccToItemNameAndStatus);
+router.get('/search/name-status/:status/:name', SearchItemsAccToItemNameAndStatus);
 
 
 module.exports = router;

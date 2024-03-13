@@ -1,7 +1,7 @@
 const DB = require('./../../config/Database');
 
 const ItemCategoryAccToIdAndStatus = (req,res) => {
-    const {status,category} = req.query;
+    const {status,category} = req.params;
     if(status && category){
         const sql = `SELECT * FROM item_category WHERE item_category_status = ? AND item_category_name LIKE '%${category}%'`;
         DB.connection.query(sql,[status,category],(err,result)=>{

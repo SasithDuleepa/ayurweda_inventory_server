@@ -12,11 +12,11 @@ const ItemCategoryAccToStatus  = require('../controllers/item category/itemCateg
 const router = express.Router();
 
 router.post('/add', AddItemCategory);
-router.get('/category', GetItemCategoryAccToItemId);
+router.get('/category/item_id/:id', GetItemCategoryAccToItemId);
 router.put('/update', UpdateItemCategory);
-router.get('', ItemCategoryAccToIdAndStatus);
+router.get('/status-category/:status/:category', ItemCategoryAccToIdAndStatus);
 router.delete('/delete', DeleteItemCategory);
-router.get('/status', ItemCategoryAccToStatus);
+router.get('/status/:status', ItemCategoryAccToStatus);
 
 
 module.exports = router;

@@ -1,7 +1,7 @@
 const DB = require('./../../config/Database');
 
 const SearchItemsAccToItemNameAndStatus = (req,res) => {
-    const {status,name} = req.query;
+    const {status,name} = req.params;
     console.log('called');
     if(status && name){
         const sql = `SELECT * FROM item WHERE item_status = '${status}' AND item_name LIKE '%${name}%'`;

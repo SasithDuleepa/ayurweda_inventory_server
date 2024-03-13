@@ -1,7 +1,7 @@
 const DB = require('./../../config/Database');
 
 const ItemCategoryAccToStatus = (req,res) => {
-    const {status} = req.query;
+    const {status} = req.params;
     if(status ){
         const sql = `SELECT * FROM item_category WHERE item_category_status = ? `;
         DB.connection.query(sql,[status],(err,result)=>{
