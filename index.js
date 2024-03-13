@@ -4,11 +4,6 @@ var cors = require('cors')
 require('dotenv').config();
 
 const app = express();
-// const http = require('http');
-// const server = http.createServer(app);
-// const { Server } = require("socket.io");
-// const io = new Server(server);
-
 const socket = require("socket.io");
 const PORT = 8080;
 
@@ -69,13 +64,10 @@ app.use('/branch', Branch);
 
 
 
-// app.listen(process.env.PORT, () => {
-//     console.log(`Server is running on port ${process.env.PORT}`);
-//   });
 
-const server = app.listen(PORT, function () {
-  console.log(`Listening on port ${PORT}`);
-  console.log(`http://localhost:${PORT}`);
+
+const server = app.listen(process.env.PORT, () => {
+  console.log(`Server is running on port ${process.env.PORT}`);
 });
 
 
