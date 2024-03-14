@@ -13,6 +13,8 @@ const DB = require('./config/Database.js');
 
 const Item = require('./routes/item.js');
 const ItemCategory = require('./routes/itemCategory.js');
+const Inventory = require('./routes/inventory.js');
+const Branch = require('./routes/branch.js');
 
 
 
@@ -38,6 +40,8 @@ app.use(cors({
 
 app.use('/item', Item);
 app.use('/itemCategory', ItemCategory);
+app.use('/inventory', Inventory);
+app.use('/branch', Branch);
 
 
 

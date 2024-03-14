@@ -15,7 +15,7 @@ router.post('/add', AddItemCategory);
 router.get('/category/item_id/:id', GetItemCategoryAccToItemId);
 router.put('/update', UpdateItemCategory);
 router.get('/status-category/:status/:category', ItemCategoryAccToIdAndStatus);
-router.delete('/delete', DeleteItemCategory);
+router.delete('/delete/:id', DeleteItemCategory);
 router.get('/status/:status', ItemCategoryAccToStatus);
 
 
