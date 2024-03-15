@@ -15,6 +15,8 @@ const Item = require('./routes/item.js');
 const ItemCategory = require('./routes/itemCategory.js');
 const Inventory = require('./routes/inventory.js');
 const Branch = require('./routes/branch.js');
+const Store = require('./routes/stores.js');
+const user = require('./routes/user.js')
 
 
 
@@ -42,6 +44,8 @@ app.use('/item', Item);
 app.use('/itemCategory', ItemCategory);
 app.use('/inventory', Inventory);
 app.use('/branch', Branch);
+app.use('/store', Store);
+app.use('/user', user);
 
 
 
