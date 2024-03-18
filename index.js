@@ -16,7 +16,11 @@ const ItemCategory = require('./routes/itemCategory.js');
 const Inventory = require('./routes/inventory.js');
 const Branch = require('./routes/branch.js');
 const Store = require('./routes/stores.js');
-const user = require('./routes/user.js')
+const user = require('./routes/user.js');
+const Supplier = require('./routes/supplier.js')
+const Customer = require('./routes/customer.js')
+const Pos = require('./routes/pos.js')
+const InventoryRequest = require('./routes/inventoryRequest.js')
 
 
 
@@ -46,7 +50,10 @@ app.use('/inventory', Inventory);
 app.use('/branch', Branch);
 app.use('/store', Store);
 app.use('/user', user);
-
+app.use('/supplier', Supplier);
+app.use('/customer', Customer);
+app.use('/pos', Pos);
+app.use('/inventoryRequest', InventoryRequest);
 
 
 
