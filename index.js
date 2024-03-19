@@ -21,6 +21,8 @@ const Supplier = require('./routes/supplier.js')
 const Customer = require('./routes/customer.js')
 const Pos = require('./routes/pos.js')
 const InventoryRequest = require('./routes/inventoryRequest.js')
+const PurchaseOrder = require('./routes/purchaseOrder.js')
+const Dispose = require('./routes/dispose.js')
 
 
 
@@ -54,7 +56,8 @@ app.use('/supplier', Supplier);
 app.use('/customer', Customer);
 app.use('/pos', Pos);
 app.use('/inventoryRequest', InventoryRequest);
-
+app.use('/purchase_order', PurchaseOrder)
+app.use('/dispose', Dispose)
 
 
 
