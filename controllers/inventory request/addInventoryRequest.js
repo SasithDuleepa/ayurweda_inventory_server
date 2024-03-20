@@ -2,7 +2,7 @@ const DB = require('./../../config/Database');
 
 const AddInventoryRequest = (req,res) => {
     console.log(req.body)
-    const {inventory_request_type,inventory_request_id,inventory_request_user_id,inventory_request_date,inventory_request_status,inventory_request_items} = req.body;
+    const {inventory_request_type,inventory_request_id,inventory_request_user_id,inventory_request_date,inventory_request_status,inventory_request_items,inventory_request_description} = req.body;
 
     if(inventory_request_id !== '' && inventory_request_user_id !== '' && inventory_request_date !== ''  && inventory_request_items.length >0){
         if(inventory_request_type ===  'ITEM'){
@@ -42,8 +42,8 @@ const AddInventoryRequest = (req,res) => {
 
 
         }else{
-            const Sql = `INSERT INTO inventory_request (inventory_request_id,inventory_request_user_id,inventory_request_date,inventory_request_status) VALUES (?,?,?,?)`;
-        DB.connection.query(Sql, [inventory_request_id, inventory_request_user_id, inventory_request_date, inventory_request_status], (err, result) => {
+            const Sql = `INSERT INTO inventory_request (inventory_request_id,inventory_request_user_id,inventory_request_date,inventory_request_status,inventory_request_description) VALUES (?,?,?,?,?)`;
+        DB.connection.query(Sql, [inventory_request_id, inventory_request_user_id, inventory_request_date, inventory_request_status,inventory_request_description], (err, result) => {
             if(result){
 
                 //add items

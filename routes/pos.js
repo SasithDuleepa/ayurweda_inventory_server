@@ -6,7 +6,7 @@ const SearchPosAccToPosIdAndStatus = require('../controllers/pos/searchPosAccToP
 const GetPos = require('../controllers/pos/getPos');
 const SearchBillAccToBillIdAndBranchAndPosType = require('../controllers/pos/searchBillAccToBillIdAndBranchAndPosType');
 const SearchBillAccToRateRangedAndBranchAndPosType = require('../controllers/pos/searchBillsAccToRateRangedAndBranchAndPosType');
-
+const BillsAccToDateAndBranchAndPosType = require('../controllers/pos/billsAccToDateAndBranchAndPosType');
 
 const router = express.Router();
 
@@ -18,4 +18,5 @@ router.get('/getPos/:id', GetPos);
 router.get('/search/BillId/Branch/PosType/:billId/:branch/:posType', SearchBillAccToBillIdAndBranchAndPosType);
 router.get('/search/RateRanged/Branch/PosType/:from/:to/:branch/:posType', SearchBillAccToRateRangedAndBranchAndPosType);
 
+router.get('/billsAccToDate/Branch/PosType/:date/:branch/:posType', BillsAccToDateAndBranchAndPosType);
 module.exports = router;
