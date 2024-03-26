@@ -23,6 +23,8 @@ const Pos = require('./routes/pos.js')
 const InventoryRequest = require('./routes/inventoryRequest.js')
 const PurchaseOrder = require('./routes/purchaseOrder.js')
 const Dispose = require('./routes/dispose.js')
+const InventoryRelease = require('./routes/inventoryRelease.js')
+const userRoles = require('./routes/userRoles')
 
 
 
@@ -57,7 +59,9 @@ app.use('/customer', Customer);
 app.use('/pos', Pos);
 app.use('/inventoryRequest', InventoryRequest);
 app.use('/purchase_order', PurchaseOrder)
-app.use('/dispose', Dispose)
+app.use('/dispose', Dispose);
+app.use('/inventoryRelease', InventoryRelease)
+app.use('/userRoles', userRoles)
 
 
 

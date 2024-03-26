@@ -5,7 +5,7 @@ const SearchBillAccToRateRangedAndBranchAndPosType = (req,res) => {
     console.log(from,to,branch,posType);
     const Sql = `SELECT pos.*, customer.customer_name
     FROM pos 
-    INNER JOIN customer ON pos.customer_id = customer.customer_id
+    JOIN customer ON pos.customer_id = customer.customer_id
     WHERE pos.pos_date BETWEEN '${from}' AND '${to}' AND pos.pos_type = '${posType}' AND pos.branch_id = '${branch}'`;
 
     DB.connection.query(Sql, (err, result) => { 

@@ -27,18 +27,28 @@ const AddInventoryRequest = (req,res) => {
 
 
             //add items
-            inventory_request_items.map(item => {
-                const Sql = `INSERT INTO inventory_request_items (inventory_request_id, inventory_batch_id, inventory_request_item_qty) VALUES (?, ?, ?)`;
-                DB.connection.query(Sql, [inventory_request_id, item.item_inventory_batch_id, item.qty], (err, result) => {
-                    if(result){
-                       console.log(result)
-                        
-                    }
-                    else{
-                        console.log(err)
-                    }
-                })
+            const Sql = `INSERT INTO inventory_request (inventory_request_id,inventory_request_user_id,inventory_request_date,inventory_request_status,inventory_request_description) VALUES (?,?,?,?,?)`;
+            DB.connection.query(Sql, [inventory_request_id, inventory_request_user_id, inventory_request_date, inventory_request_status,inventory_request_description], (err, result) => {
+                if(result){
+    
+                    //add items
+                    inventory_request_items.map(item => {
+                        const Sql = `INSERT INTO inventory_request_items (inventory_request_id, inventory_batch_id, inventory_request_item_qty) VALUES (?, ?, ?)`;
+                        DB.connection.query(Sql, [inventory_request_id, item.item_inventory_batch_id, item.qty], (err, result) => {
+                            if(result){
+                                res.status(200).json({message: "Inventory Request Added Successfully"})
+                            }
+                            else{
+                                console.log(err)
+                            }
+                        })
+                    })
+
+                }
             })
+
+
+  
 
 
         }else{

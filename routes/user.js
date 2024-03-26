@@ -7,7 +7,7 @@ const SearchUserAccToUserNameAndStatus = require('../controllers/user/SearchUser
 const router = express.Router();
 
 router.post('/add', AddUser);
-router.post('/search/name/status/:name/:status', SearchUserAccToUserNameAndStatus);
+router.get('/search/name/status/:name/:status', SearchUserAccToUserNameAndStatus);
 
 
 module.exports = router;
